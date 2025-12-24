@@ -4,7 +4,11 @@ import Product from "./components/Product.tsx";
 import Shop from "./components/Shop.tsx";
 import { DUMMY_PRODUCTS } from "./utils/dummy-products.ts";
 import "./App.css";
-import { type ShoppingCartState } from "./utils/type-utils.ts";
+import {
+  type CartContextProps,
+  type ShoppingCartState,
+} from "./utils/type-utils.ts";
+import { CartContext } from "./store/shopping-cart-context.tsx";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartState>({
@@ -67,8 +71,13 @@ function App() {
     });
   };
 
+  const ctxValue: CartContextProps = {
+    items: shoppingCart.items,
+    addItemToCart: handleAddItemToCart,
+  };
+
   return (
-    <>
+    <CartContext value={ctxValue}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -76,11 +85,11 @@ function App() {
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
-    </>
+    </CartContext>
   );
 }
 

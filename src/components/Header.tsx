@@ -26,7 +26,6 @@ const Header: React.FC<HeaderProps> = ({ cart, onUpdateCartItemQuantity }) => {
     <>
       <CartModal
         ref={modal}
-        cartItems={cart.items}
         onUpdateCartItemQuantity={onUpdateCartItemQuantity}
         title="Your Cart"
         actions={modalActions}

@@ -5,7 +5,6 @@ import Cart from "./Cart.tsx";
 
 const CartModal: React.FC<CartModalProps> = ({
   ref,
-  cartItems,
   onUpdateCartItemQuantity,
   title,
   actions,
@@ -27,7 +26,7 @@ const CartModal: React.FC<CartModalProps> = ({
   return createPortal(
     <dialog id="modal" ref={dialog}>
       <h2>{title}</h2>
-      <Cart items={cartItems} onUpdateItemQuantity={onUpdateCartItemQuantity} />
+      <Cart onUpdateItemQuantity={onUpdateCartItemQuantity} />
       <form method="dialog" id="modal-actions">
         {actions}
       </form>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import type { CartProps } from "../utils/type-utils.ts";
+import { CartContext } from "../store/shopping-cart-context.tsx";
 
-const Cart: React.FC<CartProps> = ({ items, onUpdateItemQuantity }) => {
+const Cart: React.FC<CartProps> = ({ onUpdateItemQuantity }) => {
+  const { items } = useContext(CartContext);
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0

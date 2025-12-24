@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import type { ProductProps } from "../utils/type-utils.ts";
+import { CartContext } from "../store/shopping-cart-context.tsx";
 
 const Product: React.FC<ProductProps> = ({
   id,
@@ -7,8 +8,9 @@ const Product: React.FC<ProductProps> = ({
   title,
   price,
   description,
-  onAddToCart,
 }) => {
+  const { addItemToCart } = useContext(CartContext);
+
   return (
     <article className="product">
       <img src={image} alt={title} />
@@ -19,7 +21,7 @@ const Product: React.FC<ProductProps> = ({
           <p>{description}</p>
         </div>
         <p className="product-actions">
-          <button onClick={() => onAddToCart(id)}>Add to Cart</button>
+          <button onClick={() => addItemToCart(id)}>Add to Cart</button>
         </p>
       </div>
     </article>
