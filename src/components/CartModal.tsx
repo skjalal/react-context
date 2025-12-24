@@ -3,12 +3,7 @@ import { createPortal } from "react-dom";
 import type { CartModalProps } from "../utils/type-utils.ts";
 import Cart from "./Cart.tsx";
 
-const CartModal: React.FC<CartModalProps> = ({
-  ref,
-  onUpdateCartItemQuantity,
-  title,
-  actions,
-}) => {
+const CartModal: React.FC<CartModalProps> = ({ ref, title, actions }) => {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(
@@ -26,7 +21,7 @@ const CartModal: React.FC<CartModalProps> = ({
   return createPortal(
     <dialog id="modal" ref={dialog}>
       <h2>{title}</h2>
-      <Cart onUpdateItemQuantity={onUpdateCartItemQuantity} />
+      <Cart />
       <form method="dialog" id="modal-actions">
         {actions}
       </form>

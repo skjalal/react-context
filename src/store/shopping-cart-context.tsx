@@ -5,7 +5,12 @@ const defaultAddItemToCrt = (id: string) => {
   console.log("Default function invoke: " + id);
 };
 
+const defaultUpdateItemQuantity = (id: string, quantity: number) => {
+  console.log("Default function invoke: " + id + " - " + quantity);
+};
+
 export const CartContext = createContext<CartContextProps>({
   items: [],
   addItemToCart: defaultAddItemToCrt,
+  updateItemQuantity: defaultUpdateItemQuantity,
 });

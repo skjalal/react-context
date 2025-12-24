@@ -8,22 +8,10 @@ type Product = {
   description: string;
 };
 
-type HeaderProps = {
-  cart: {
-    items: Item[];
-  };
-  onUpdateCartItemQuantity: (productId: string, amount: number) => void;
-};
-
 type CartModalProps = {
-  onUpdateCartItemQuantity: (productId: string, amount: number) => void;
   title: string;
   actions: JSX.Element;
   ref: Ref<{ open: () => void }>;
-};
-
-type CartProps = {
-  onUpdateItemQuantity: (productId: string, amount: number) => void;
 };
 
 type Item = {
@@ -52,14 +40,13 @@ type ShoppingCartState = {
 type CartContextProps = {
   items: Item[];
   addItemToCart: (id: string) => void;
+  updateItemQuantity: (id: string, quantity: number) => void;
 };
 
 export {
   type Product,
   type CartModalProps,
   type Item,
-  type CartProps,
-  type HeaderProps,
   type ProductProps,
   type ShopProps,
   type ShoppingCartState,
