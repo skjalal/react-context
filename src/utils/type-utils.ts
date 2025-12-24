@@ -43,6 +43,14 @@ type CartContextProps = {
   updateItemQuantity: (id: string, quantity: number) => void;
 };
 
+type ShoppingCartReducerAction = {
+  type: string;
+  payload: {
+    id: string;
+    amount?: number;
+  };
+};
+
 export {
   type Product,
   type CartModalProps,
@@ -51,4 +59,5 @@ export {
   type ShopProps,
   type ShoppingCartState,
   type CartContextProps,
+  type ShoppingCartReducerAction,
 };
