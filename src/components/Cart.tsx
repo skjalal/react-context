@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { CartContext } from "../store/shopping-cart-context.tsx";
+import { useCart } from "../store/CartContext.tsx";
 
 const Cart: React.FC = () => {
-  const { items, updateItemQuantity } = useContext(CartContext);
+  const { items, updateItemQuantity } = useCart();
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0

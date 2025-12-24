@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import type { CartContextProps } from "../utils/type-utils.ts";
 
 const defaultAddItemToCrt = (id: string) => {
@@ -14,3 +14,11 @@ export const CartContext = createContext<CartContextProps>({
   addItemToCart: defaultAddItemToCrt,
   updateItemQuantity: defaultUpdateItemQuantity,
 });
+
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
+};

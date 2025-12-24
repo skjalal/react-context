@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import type { ProductProps } from "../utils/type-utils.ts";
-import { CartContext } from "../store/shopping-cart-context.tsx";
+import { useCart } from "../store/CartContext.tsx";
 
 const Product: React.FC<ProductProps> = ({
   id,
@@ -9,7 +9,7 @@ const Product: React.FC<ProductProps> = ({
   price,
   description,
 }) => {
-  const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart } = useCart();
 
   return (
     <article className="product">
