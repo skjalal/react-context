@@ -75,19 +75,14 @@ const CartContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const handleAddItemToCart = (id: string) => {
     shoppingCartDispatch({
       type: "ADD_ITEM",
-      payload: {
-        id: id,
-      },
+      payload: { id },
     });
   };
 
-  const handleUpdateCartItemQuantity = (productId: string, amount: number) => {
+  const handleUpdateCartItemQuantity = (id: string, amount: number) => {
     shoppingCartDispatch({
       type: "UPDATE_ITEM",
-      payload: {
-        id: productId,
-        amount: amount,
-      },
+      payload: { id, amount },
     });
   };
 
